@@ -40,6 +40,6 @@ type Questionnaire struct {
 
 // LoginData - username and pasword
 type LoginData struct {
-	Username 		string 		`json:"user_name"`
+	Email 			string		`json:"email"`
 	Pasword			string		`json:"pasword"`
 }

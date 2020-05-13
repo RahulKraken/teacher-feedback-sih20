@@ -64,7 +64,12 @@ func GetUser(email string) (types.User, error) {
 
 // MatchCredentials - matches login credentials
 func MatchCredentials(data types.LoginData) bool {
-	return false
+	user, err := GetUser(data.Email)
+	if err != nil {
+		log.Println("user not found post database check init")
+		return false
+	}
+	return user.Pasword == data.Pasword
 }
 
 // DeleteUser - deletes existing user

@@ -132,59 +132,65 @@ func SignUpHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// loginHandler - handles login requests
+// LoginHandler - handles login requests
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
-	// log.Println("Hit", "/login", r.Method)
-	// var data types.LoginData
-	// decoder := json.NewDecoder(r.Body)
-	// err := decoder.Decode(&data); if err != nil {
-	// 	log.Println("Could not parse request", err)
-	// }
+	log.Println("Hit", "/login", r.Method)
+	var data types.LoginData
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&data); if err != nil {
+		log.Println("Could not parse request", err)
+	}
 
-	// log.Println("username:", data.Username, "; pasword:", data.Pasword)
+	log.Println("email:", data.Email, "; pasword:", data.Pasword)
 
-	// // check if username exists
-	// b := database.ExistsUsername(data.Username)
-	// if !b {
-	// 	log.Println("User does not exist")
-	// 	http.Error(w, "User does not exist", http.StatusNotFound)
-	// 	return
-	// }
+	// check if username exists
+	b := database.ExistsUser(data.Email)
+	if !b {
+		log.Println("User does not exist")
+		http.Error(w, "User does not exist", http.StatusNotFound)
+		return
+	}
 
-	// // check if credentials match
-	// b = database.MatchCredentials(data)
-	// if !b {
-	// 	log.Println("Incorrect password")
-	// 	http.Error(w, "Incorrect password", http.StatusBadRequest)
-	// 	return
-	// }
+	// check if credentials match
+	b = database.MatchCredentials(data)
+	if !b {
+		log.Println("Incorrect password")
+		http.Error(w, "Incorrect password", http.StatusBadRequest)
+		return
+	}
 
-	// // generate and send jwt
-	// token, err := hash.GenerateJWT(data.Username)
-	// if err != nil {
-	// 	log.Println("Error generating JWT")
-	// 	http.Error(w, "Something wrong happened", http.StatusInternalServerError)
-	// }
+	// generate and send jwt
+	token, err := hash.GenerateJWT(data.Email)
+	if err != nil {
+		log.Println("Error generating JWT")
+		http.Error(w, "Something wrong happened", http.StatusInternalServerError)
+		return
+	}
 
-	// user := database.GetUserWithUsername(data.Username)
+	user, err := database.GetUser(data.Email)
+	if err != nil {
+		log.Println("user not found")
+		http.Error(w, "User not found", http.StatusInternalServerError)
+		return
+	}
 
-	// // anonymous struct to send token
-	// response := struct {
-	// 	AuthToken		string		`json:"token"`
-	// 	Id				int			`json:"id"`
-	// 	Username		string		`json:"username"`
-	// 	Email			string		`json:"email"`
-	// }{
-	// 	AuthToken:	token,
-	// 	Id:			user.ID,
-	// 	Username:	user.UserName,
-	// 	Email:		user.Email,
-	// }
+	// anonymous struct to send token
+	response := struct {
+		AuthToken		string		`json:"token"`
+		ID				int			`json:"id"`
+		Username		string		`json:"username"`
+		Email			string		`json:"email"`
+	}{
+		AuthToken:	token,
+		ID:			user.ID,
+		Username:	user.UserName,
+		Email:		user.Email,
+	}
 
-	// encoder := json.NewEncoder(w)
-	// err = encoder.Encode(response)
-	// if err != nil {
-	// 	log.Println("Error sending JWT token")
-	// 	http.Error(w, "Something wrong happened", http.StatusInternalServerError)
-	// }
+	encoder := json.NewEncoder(w)
+	err = encoder.Encode(response)
+	if err != nil {
+		log.Println("Error sending JWT token")
+		http.Error(w, "Something wrong happened", http.StatusInternalServerError)
+	}
 }
