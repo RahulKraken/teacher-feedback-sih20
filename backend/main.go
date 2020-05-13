@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"github.com/RahulKraken/teacher-feedback-sih20/backend/types"
 	"github.com/RahulKraken/teacher-feedback-sih20/backend/auth"
+	_ "github.com/RahulKraken/teacher-feedback-sih20/backend/database"
 	"fmt"
 )
 
