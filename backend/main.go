@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"github.com/RahulKraken/teacher-feedback-sih20/backend/types"
 	"github.com/RahulKraken/teacher-feedback-sih20/backend/auth"
+	"github.com/RahulKraken/teacher-feedback-sih20/backend/routes"
 	_ "github.com/RahulKraken/teacher-feedback-sih20/backend/database"
 	"fmt"
 )
@@ -25,7 +26,8 @@ func main() {
 	r.HandleFunc("/adduser", addUser).Methods("POST")
 	r.HandleFunc("/login", auth.LoginHandler).Methods("POST")
 	r.HandleFunc("/signup", auth.SignUpHandler).Methods("POST")
-	
+	r.HandleFunc("/getReport", route.GetReport).Methods("POST")
+
 	err := http.ListenAndServe(":5000", r)
 	if err != nil {
 		panic(err.Error())

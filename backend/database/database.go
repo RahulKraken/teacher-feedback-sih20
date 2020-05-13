@@ -82,6 +82,28 @@ func UpdateUser(user types.User) error {
 	return nil
 }
 
+// GetReport - get report for given user
+func GetReport(email string) ([]types.Report, error) {
+	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
+	filter := bson.M {
+		"email" : bson.M {
+			"$eq" : email,
+		},
+	}
+	var report []types.Report
+	cursor, err := questionnaire.Find(ctx, filter)
+	if err != nil {
+		log.Println("error fetching report")
+		return report, err
+	}
+	if err = cursor.All(ctx, &report); err != nil {
+		log.Println("error parsing result")
+		return report, err
+	}
+	log.Println(report)
+	return report, nil
+}
+
 // AddQuestionnaireToUser - adds new questionnaire to user
 func AddQuestionnaireToUser(user types.User, data types.Questionnaire) error {
 	opts := options.Update().SetUpsert(true)
@@ -118,5 +140,6 @@ func init() {
 	log.Printf("connection successful!\n")
 	db = client.Database("sih20")
 	users = db.Collection("users")
+	// TODO : change the spelling before deployement
 	questionnaire = db.Collection("questionniare")
 }

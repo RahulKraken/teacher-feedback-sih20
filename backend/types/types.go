@@ -37,6 +37,11 @@ type Questionnaire struct {
 	Questions	[]QuestionnaireItem 	`json:"questions"`
 }
 
+// Report - set of email, timestamp and data
+type Report struct {
+	Email		string			`json:"email"`
+	Data 		[]Questionnaire	`json:"data"`
+}
 
 // LoginData - username and pasword
 type LoginData struct {
