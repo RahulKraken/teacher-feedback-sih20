@@ -2,12 +2,12 @@ package auth
 
 import (
 	"fmt"
-	// "encoding/json"
+	"encoding/json"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/mux"
 	"github.com/RahulKraken/teacher-feedback-sih20/backend/hash"
-	// "github.com/RahulKraken/teacher-feedback-sih20/backend/types"
-	// "github.com/RahulKraken/teacher-feedback-sih20/backend/database"
+	"github.com/RahulKraken/teacher-feedback-sih20/backend/types"
+	"github.com/RahulKraken/teacher-feedback-sih20/backend/database"
 	"log"
 	"net/http"
 )
@@ -68,68 +68,68 @@ func HandleAuth(endpoint func(http.ResponseWriter, *http.Request)) http.Handler 
 }
 
 
-// signUpHandler - handles signup requests
+// SignUpHandler - handles signup requests
 func SignUpHandler(w http.ResponseWriter, r *http.Request) {
-	// log.Println("Hit", "/signup", r.Method)
-	// var user types.User
-	// decoder := json.NewDecoder(r.Body)
-	// err := decoder.Decode(&user); if err != nil {
-	// 	log.Println("Could not parse request", err)
-	// }
+	log.Println("Hit", "/signup", r.Method)
+	var user types.User
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&user); if err != nil {
+		log.Println("Could not parse request", err)
+	}
 
-	// log.Println("username:", user.UserName, "; email:", user.Email, "; pasword:", user.Pasword)
+	log.Println("username:", user.UserName, "; email:", user.Email, "; pasword:", user.Pasword)
 
-	// // check if email already exists
-	// b := database.ExistsEmail(user.Email)
-	// if b {
-	// 	// email already exists
-	// 	log.Println("User exists")
-	// 	http.Error(w, "user with this email already exists", http.StatusBadRequest)
-	// 	return
-	// }
+	// check if user already exists
+	b := database.ExistsUser(user.Email)
+	if b {
+		// user already exists
+		log.Println("User exists")
+		http.Error(w, "user already exists", http.StatusBadRequest)
+		return
+	}
 
-	// // check if username exists
-	// b = database.ExistsUsername(user.UserName)
-	// if b {
-	// 	// username already in use
-	// 	log.Println("Username is taken")
-	// 	http.Error(w, "Username is already in use", http.StatusBadRequest)
-	// 	return
-	// }
+	// create user
+	err = database.CreateUser(user)
 
-	// // create user
-	// _ = database.CreateUser(user)
+	if err != nil {
+		log.Println("Error creating user")
+		http.Error(w, "Something wrong happened", http.StatusInternalServerError)
+	}
 
-	// // generate and send JWT
-	// token, err := hash.GenerateJWT(user.UserName)
-	// if err != nil {
-	// 	log.Println("Error generating JWT")
-	// 	http.Error(w, "Something wrong happened", http.StatusInternalServerError)
-	// }
+	// generate and send JWT
+	token, err := hash.GenerateJWT(user.Email)
+	if err != nil {
+		log.Println("Error generating JWT")
+		http.Error(w, "Something wrong happened", http.StatusInternalServerError)
+	}
 
-	// createdUser := database.GetUserWithUsername(user.UserName)
+	createdUser, err := database.GetUser(user.Email)
+	if err != nil {
+		log.Println("Couldn't create user")
+		http.Error(w, "Something wrong happended", http.StatusInternalServerError)
+	}
 
-	// // anonymous struct to send token
-	// response := struct {
-	// 	AuthToken		string		`json:"token"`
-	// 	Id				int			`json:"id"`
-	// 	Username		string		`json:"username"`
-	// 	Email			string		`json:"email"`
-	// }{
-	// 	AuthToken:	token,
-	// 	Id:			createdUser.ID,
-	// 	Username:	createdUser.UserName,
-	// 	Email:		createdUser.Email,
-	// }
+	// anonymous struct to send token
+	response := struct {
+		AuthToken		string		`json:"token"`
+		ID				int			`json:"id"`
+		Username		string		`json:"username"`
+		Email			string		`json:"email"`
+	}{
+		AuthToken:	token,
+		ID:			createdUser.ID,
+		Username:	createdUser.UserName,
+		Email:		createdUser.Email,
+	}
 
-	// log.Println(response)
+	log.Println(response)
 
-	// encoder := json.NewEncoder(w)
-	// err = encoder.Encode(response)
-	// if err != nil {
-	// 	log.Println("Error sending JWT token")
-	// 	http.Error(w, "Something wrong happened", http.StatusInternalServerError)
-	// }
+	encoder := json.NewEncoder(w)
+	err = encoder.Encode(response)
+	if err != nil {
+		log.Println("Error sending JWT token")
+		http.Error(w, "Something wrong happened", http.StatusInternalServerError)
+	}
 }
 
 // loginHandler - handles login requests

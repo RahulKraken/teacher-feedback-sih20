@@ -17,14 +17,19 @@ var (
 	questionnaire *mongo.Collection
 )
 
-func ExistsEmail(email string) bool {
-	return false
+// ExistsUser - checkts if user already exists
+func ExistsUser(email string) bool {
+	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
+	filter := bson.M {
+		"email" : bson.M {
+			"$eq" : email,
+		},
+	}
+	res := users.FindOne(ctx, filter)
+	return res.Err() == nil
 }
 
-func ExistsUsername(username string) bool {
-	return false
-}
-
+// CreateUser - creates user if not exists
 func CreateUser(user types.User) error {
 	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
 	res, err := users.InsertOne(ctx, user)
@@ -36,22 +41,43 @@ func CreateUser(user types.User) error {
 	return nil
 }
 
+// GetUser - gets a user if exists
+func GetUser(email string) (types.User, error) {
+	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
+	filter := bson.M {
+		"email" : bson.M {
+			"$eq" : email,
+		},
+	}
+	var user types.User
+	res := users.FindOne(ctx, filter)
+	if res.Err() != nil {
+		return user, res.Err()
+	}
+	res.Decode(&user)
+	return user, nil
+}
+
 // func GetUserWithUsername(username string) types.User {
 // 	return nil
 // }
 
+// MatchCredentials - matches login credentials
 func MatchCredentials(data types.LoginData) bool {
 	return false
 }
 
-func deleteUser(user types.User) error {
+// DeleteUser - deletes existing user
+func DeleteUser(user types.User) error {
 	return nil
 }
 
-func updateUser(user types.User) error {
+// UpdateUser - updates existing user
+func UpdateUser(user types.User) error {
 	return nil
 }
 
+// AddQuestionnaireToUser - adds new questionnaire to user
 func AddQuestionnaireToUser(user types.User, data types.Questionnaire) error {
 	opts := options.Update().SetUpsert(true)
 	filter := bson.M {"email" : bson.M {
