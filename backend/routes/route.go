@@ -31,5 +31,9 @@ func GetReport(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetQuestionnaire - get questionnaire for given classroom
+func GetQuestionnaire(w http.ResponseWriter, r *http.Request) {
+	log.Println("GET - GetQuestionnaire")
+	http.ServeFile(w, r, "static/questions.json")
+}
 
 // Submit Feedback - submit the feedback
