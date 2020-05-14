@@ -12,13 +12,13 @@ import (
 // GetReport - gets all reports for given user
 func GetReport(w http.ResponseWriter, r *http.Request) {
 	log.Println("POST : GetReport")
-	var user types.User
+	var classID types.ClassID
 	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&user); if err != nil {
+	err := decoder.Decode(&classID); if err != nil {
 		log.Panic("error decoding request body")
 	}
-	log.Println("email: ", user.Email)
-	report, err := database.GetReport(user.Email)
+	log.Println("classID: ", classID.ClassID)
+	report, err := database.GetReport(classID.ClassID)
 	if err != nil {
 		log.Panic("error fetching report")
 		http.Error(w, "failed to fetch reports", http.StatusInternalServerError)
@@ -45,7 +45,7 @@ func SubmitFeedback(w http.ResponseWriter, r *http.Request) {
 		log.Println("error unmarshaling json")
 		http.Error(w, "error submitting feeback", http.StatusInternalServerError)
 	}
-	err := database.AddQuestionnaireToUser(feedback.ClassroomID, feedback)
+	err := database.AddQuestionnaireToUser(feedback.ClassID, feedback)
 	if err != nil {
 		log.Println("error saving feedback")
 		http.Error(w, "error submitting feedback", http.StatusInternalServerError)

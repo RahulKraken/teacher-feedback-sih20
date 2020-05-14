@@ -11,6 +11,8 @@ import (
 const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 const size = 12
 
+// MySigningKey - private signing key
+// TODO : put in env variables
 var MySigningKey = []byte("thisIsMySigningKeyLol")
 
 // Hash - return random hash for string val

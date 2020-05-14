@@ -83,20 +83,17 @@ func UpdateUser(user types.User) error {
 }
 
 // GetReport - get report for given user
-func GetReport(classID string) ([]types.Report, error) {
+func GetReport(classID string) (types.Report, error) {
 	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
 	filter := bson.M {
 		"classId" : bson.M {
 			"$eq" : classID,
 		},
 	}
-	var report []types.Report
-	cursor, err := feedbacks.Find(ctx, filter)
+	var report types.Report
+	res := feedbacks.FindOne(ctx, filter)
+	err := res.Decode(&report)
 	if err != nil {
-		log.Println("error fetching report")
-		return report, err
-	}
-	if err = cursor.All(ctx, &report); err != nil {
 		log.Println("error parsing result")
 		return report, err
 	}
