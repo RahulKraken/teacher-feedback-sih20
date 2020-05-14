@@ -12,9 +12,9 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/login", auth.LoginHandler).Methods("POST")
 	r.HandleFunc("/signup", auth.SignUpHandler).Methods("POST")
-	r.HandleFunc("/getReport", route.GetReport).Methods("POST")
-	r.HandleFunc("/getQuestionnaire", route.GetQuestionnaire).Methods("GET")
-	r.HandleFunc("/submitFeedback", route.SubmitFeedback).Methods("POST")
+	r.Handle("/getReport", auth.HandleAuth(route.GetReport)).Methods("POST")
+	r.Handle("/getQuestionnaire", auth.HandleAuth(route.GetQuestionnaire)).Methods("GET")
+	r.Handle("/submitFeedback", auth.HandleAuth(route.SubmitFeedback)).Methods("POST")
 
 	err := http.ListenAndServe(":5000", r)
 	if err != nil {
