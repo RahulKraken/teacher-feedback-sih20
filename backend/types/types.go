@@ -33,13 +33,14 @@ type QuestionnaireItem struct {
 // Questionnaire - set of QuestionnaireItems
 type Questionnaire struct {
 	ID 			int 					`json:"id"`
+	ClassroomID	string					`json:"classId"`
 	TimeStamp	string					`json:"time_stamp"`
 	Questions	[]QuestionnaireItem 	`json:"questions"`
 }
 
 // Report - set of email, timestamp and data
 type Report struct {
-	Email		string			`json:"email"`
+	ClassroomID	string			`json:"classId"`
 	Data 		[]Questionnaire	`json:"data"`
 }
 

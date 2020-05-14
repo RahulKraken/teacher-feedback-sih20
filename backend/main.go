@@ -28,6 +28,7 @@ func main() {
 	r.HandleFunc("/signup", auth.SignUpHandler).Methods("POST")
 	r.HandleFunc("/getReport", route.GetReport).Methods("POST")
 	r.HandleFunc("/getQuestionnaire", route.GetQuestionnaire).Methods("GET")
+	r.HandleFunc("/submitFeedback", route.SubmitFeedback).Methods("POST")
 
 	err := http.ListenAndServe(":5000", r)
 	if err != nil {

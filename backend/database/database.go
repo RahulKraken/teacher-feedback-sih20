@@ -14,7 +14,7 @@ import (
 var (
 	db *mongo.Database
 	users *mongo.Collection
-	questionnaire *mongo.Collection
+	feedbacks *mongo.Collection
 )
 
 // ExistsUser - checkts if user already exists
@@ -83,15 +83,15 @@ func UpdateUser(user types.User) error {
 }
 
 // GetReport - get report for given user
-func GetReport(email string) ([]types.Report, error) {
+func GetReport(classID string) ([]types.Report, error) {
 	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
 	filter := bson.M {
-		"email" : bson.M {
-			"$eq" : email,
+		"classId" : bson.M {
+			"$eq" : classID,
 		},
 	}
 	var report []types.Report
-	cursor, err := questionnaire.Find(ctx, filter)
+	cursor, err := feedbacks.Find(ctx, filter)
 	if err != nil {
 		log.Println("error fetching report")
 		return report, err
@@ -105,18 +105,20 @@ func GetReport(email string) ([]types.Report, error) {
 }
 
 // AddQuestionnaireToUser - adds new questionnaire to user
-func AddQuestionnaireToUser(user types.User, data types.Questionnaire) error {
+func AddQuestionnaireToUser(classID string, data types.Questionnaire) error {
 	opts := options.Update().SetUpsert(true)
-	filter := bson.M {"email" : bson.M {
-		"$eq": user.Email,
-	}}
+	filter := bson.M {
+		"classId" : bson.M {
+			"$eq": classID,
+		},
+	}
 	update := bson.M {
 		"$push": bson.M {
 			"data": data,
 		},
 	}
 	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
-	res, err := questionnaire.UpdateOne(ctx, filter, update, opts)
+	res, err := feedbacks.UpdateOne(ctx, filter, update, opts)
 	if err != nil {
 		log.Println("couldn't udpate questionnaire", err.Error())
 		return err
@@ -140,6 +142,5 @@ func init() {
 	log.Printf("connection successful!\n")
 	db = client.Database("sih20")
 	users = db.Collection("users")
-	// TODO : change the spelling before deployement
-	questionnaire = db.Collection("questionniare")
+	feedbacks = db.Collection("feedbacks")
 }

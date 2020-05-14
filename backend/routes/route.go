@@ -36,4 +36,18 @@ func GetQuestionnaire(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "static/questions.json")
 }
 
-// Submit Feedback - submit the feedback
+// SubmitFeedback - submit the feedback
+func SubmitFeedback(w http.ResponseWriter, r *http.Request) {
+	log.Println("POST - SubmitFeedback")
+	var feedback types.Questionnaire
+	decoder := json.NewDecoder(r.Body)
+	if err := decoder.Decode(&feedback); err != nil {
+		log.Println("error unmarshaling json")
+		http.Error(w, "error submitting feeback", http.StatusInternalServerError)
+	}
+	err := database.AddQuestionnaireToUser(feedback.ClassroomID, feedback)
+	if err != nil {
+		log.Println("error saving feedback")
+		http.Error(w, "error submitting feedback", http.StatusInternalServerError)
+	}
+}
