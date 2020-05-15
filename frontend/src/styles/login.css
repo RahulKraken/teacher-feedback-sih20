@@ -1,0 +1,21 @@
+.loginWindow {
+  background: #466368;
+  background: -webkit-linear-gradient(#1732b8cc, #152058);
+  background: -moz-linear-gradient(#1732b8cc, #152058);
+  background: linear-gradient(#1732b8cc, #152058);
+  padding: 30px 30px 70px 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  margin-top: 40px;
+  border-radius: 15px;
+  color: white;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

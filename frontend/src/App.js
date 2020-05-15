@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigate from "./components/navigate";
-import { Jumbotron } from "react-bootstrap";
+import Login from "./components/login";
 
 class App extends Component {
   state = {};
@@ -9,9 +10,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navigate />
-        <main className="container">
-          <Jumbotron>Hello. Welcome to SIH20.</Jumbotron>
-        </main>
+        <Router>
+          <Switch>
+            <Route path="/auth/login" component={Login} />
+            <Route path="/auth/signup" component={Login} />
+          </Switch>
+        </Router>
       </React.Fragment>
     );
   }
