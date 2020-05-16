@@ -2,28 +2,34 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import "../styles/form.css";
 
+const axios = require("axios");
+
 const SignupForm = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
 
     const name = data.get("name");
-    const email = data.get("email");
+    const e_mail = data.get("email");
     const pwd = data.get("pwd");
-    const url = "http://localhost:5000/signup";
+    const url = "/signup";
     const options = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+      url: url,
+      data: {
         user_name: name,
-        email: email,
+        email: e_mail,
         pasword: pwd,
-      }),
+      },
     };
-    const response = await fetch(url, options);
-    console.log(response.status);
+    const response = await axios(options);
+    const { token, username, email } = response.data;
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("user", username);
+    sessionStorage.setItem("email", email);
+    setTimeout(function () {
+      window.location = "/";
+    }, 1200);
   }
   return (
     <Form className="loginWindow" onSubmit={handleSubmit}>
@@ -57,7 +63,7 @@ const SignupForm = () => {
           required
         />
       </Form.Group>
-      <Form.Group controlID="passwordForm">
+      <Form.Group controlID="termsForm">
         <input type="checkbox" id="terms" name="terms" required />
         <label className="lbl terms" for="terms">
           I accept the Terms and Conditions
