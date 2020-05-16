@@ -25,3 +25,8 @@ button[type="submit"] {
 Form {
   font-family: "Montserrat", sans-serif;
 }
+
+.terms {
+  font-size: 12px;
+  margin-left: 3px;
+}
