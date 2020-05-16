@@ -1,14 +1,9 @@
 .loginWindow {
-  background: #466368;
-  background: -webkit-linear-gradient(#1732b8cc, #152058);
-  background: -moz-linear-gradient(#1732b8cc, #152058);
-  background: linear-gradient(#1732b8cc, #152058);
   padding: 30px 30px 70px 30px;
   margin-left: auto;
   margin-right: auto;
   width: 300px;
-  margin-top: 40px;
-  border-radius: 15px;
+  height: 375px;
   color: white;
 }
 
@@ -18,4 +13,97 @@ body {
   backdrop-filter: blur(8px);
   background-size: 100% 100%;
   background-repeat: no-repeat;
+}
+
+.rowLogin {
+  display: flex;
+  height: 500px;
+  width: 800px;
+  background: white;
+  margin-left: 30%;
+  margin-top: 7%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px;
+  position: fixed;
+  font-family: "Montserrat", sans-serif;
+}
+
+.rowLogin h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.col-login {
+  flex: 50%;
+  width: 400px;
+}
+
+.rowsignup {
+  display: flex;
+  height: 500px;
+  width: 400px;
+  background: white;
+  margin-left: 30%;
+  margin-top: 7%;
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
+  box-shadow: 2px;
+  position: fixed;
+  transition: transform 500ms ease-in-out;
+}
+
+.col-signup {
+  flex: 50%;
+  width: 400px;
+  background-color: #00000000;
+}
+
+.welcom1 {
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  margin: 80px 30px;
+  /* background-color: black; */
+}
+
+.welcom2 {
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  margin: 300px 80px;
+  /* background-color: black; */
+}
+
+.toggle {
+  border-radius: 15px;
+  width: 100px;
+  height: 50px;
+  color: whitesmoke;
+  background-color: #04075090;
+  border: none;
+  margin: 10px 70px;
+  outline: none !important;
+  transition: background-color 1s ease-out;
+}
+
+.toggle:hover {
+  background-color: #040750;
+  outline: none;
+}
+
+.toggle:active {
+  outline: none;
+}
+
+#par {
+  transition-property: all;
+  transition-duration: 1000ms;
+  transition-delay: 300ms;
+  transition-timing-function: ease-in-out;
 }
