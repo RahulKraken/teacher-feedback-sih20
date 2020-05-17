@@ -20,24 +20,29 @@ const Login = () => {
     const card = document.getElementById("splash");
     const text = document.getElementById("par");
     const btn = document.getElementById("btn");
+    const con = document.getElementById("cont");
 
     if (mode == 1) {
       card.style.transform = "translateX(400px)";
       card.style.borderRadius = "0 10px 10px 0";
       text.innerText = "Already have an Account ?";
       btn.innerText = "Login";
+      con.style.height = "600px";
+      card.style.height = "600px";
     } else {
       card.style.transform = "translateX(0)";
       card.style.borderRadius = "10px 0 0 10px";
       text.innerText = "Don't have an Account ?";
       btn.innerText = "Signup";
+      con.style.height = "500px";
+      card.style.height = "500px";
     }
     setMode(-1 * _mode);
   }
 
   return (
     <div>
-      <div className="rowLogin">
+      <div className="rowLogin" id="cont">
         <div className="col-signup">
           <h1>Register</h1>
           <SignupForm />

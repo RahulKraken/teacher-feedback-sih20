@@ -22,10 +22,10 @@ const LoginForm = () => {
     };
     const response = await axios(options);
     console.log(response.data);
-    const { token, username, email } = response.data;
+    const { token, username, is_teacher } = response.data;
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("user", username);
-    sessionStorage.setItem("email", email);
+    sessionStorage.setItem("mode", is_teacher ? 1 : 2);
     setTimeout(function () {
       window.location = "/";
     }, 1200);
