@@ -75,6 +75,8 @@ func SignUpHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&user); if err != nil {
 		log.Println("Could not parse request", err)
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
 	}
 
 	log.Println("username:", user.UserName, "; email:", user.Email, "; pasword:", user.Pasword)
@@ -112,14 +114,18 @@ func SignUpHandler(w http.ResponseWriter, r *http.Request) {
 	// anonymous struct to send token
 	response := struct {
 		AuthToken		string		`json:"token"`
-		ID				int			`json:"id"`
+		ID					int				`json:"id"`
 		Username		string		`json:"username"`
-		Email			string		`json:"email"`
+		Email				string		`json:"email"`
+		IsTeacher		bool			`json:"is_teacher"`
+		IsOfficer 	bool			`json:"is_officer"`
 	}{
 		AuthToken:	token,
-		ID:			createdUser.ID,
-		Username:	createdUser.UserName,
-		Email:		createdUser.Email,
+		ID:					createdUser.ID,
+		Username:		createdUser.UserName,
+		Email:			createdUser.Email,
+		IsTeacher: 	createdUser.IsTeacher,
+		IsOfficer: 	createdUser.IsOfficer,
 	}
 
 	log.Println(response)
@@ -139,6 +145,8 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&data); if err != nil {
 		log.Println("Could not parse request", err)
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
 	}
 
 	log.Println("email:", data.Email, "; pasword:", data.Pasword)
@@ -180,11 +188,15 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		ID				int			`json:"id"`
 		Username		string		`json:"username"`
 		Email			string		`json:"email"`
+		IsTeacher		bool			`json:"is_teacher"`
+		IsOfficer 	bool			`json:"is_officer"`
 	}{
 		AuthToken:	token,
 		ID:			user.ID,
 		Username:	user.UserName,
 		Email:		user.Email,
+		IsTeacher: 	user.IsTeacher,
+		IsOfficer: 	user.IsOfficer,
 	}
 
 	encoder := json.NewEncoder(w)
