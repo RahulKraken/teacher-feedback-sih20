@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Form, Button } from "react-bootstrap";
-import "../styles/login.css";
+import "../styles/auth.css";
 import logsplurl from "../images/loginsplash.jpg";
 import webbg from "../images/loginweb.jpg";
 import LoginForm from "./loginForm";

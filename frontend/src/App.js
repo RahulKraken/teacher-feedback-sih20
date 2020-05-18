@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigate from "./components/navigate";
 import Auth from "./components/auth";
 import ProtectedRoute from "./components/protectedRoute";
+import Dashboard from "./components/dashboard";
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/auth/login" component={Auth} />
+            <ProtectedRoute path="/my/dashboard" component={Dashboard} />
           </Switch>
         </Router>
       </React.Fragment>

@@ -20,15 +20,19 @@ const LoginForm = () => {
         pasword: pwd,
       },
     };
-    const response = await axios(options);
-    console.log(response.data);
-    const { token, username, is_teacher } = response.data;
-    sessionStorage.setItem("token", token);
-    sessionStorage.setItem("user", username);
-    sessionStorage.setItem("mode", is_teacher ? 1 : 2);
-    setTimeout(function () {
-      window.location = "/";
-    }, 1200);
+    try {
+      const response = await axios(options);
+      console.log(response.status);
+      const { token, username, is_teacher } = response.data;
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("user", username);
+      sessionStorage.setItem("mode", is_teacher ? 1 : 2);
+      setTimeout(function () {
+        window.location = "/my/dashboard";
+      }, 1200);
+    } catch (e) {
+      alert(e.response.data);
+    }
   }
   return (
     <Form className="loginWindow" onSubmit={handleSubmit}>

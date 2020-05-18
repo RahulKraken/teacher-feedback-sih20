@@ -1,0 +1,40 @@
+.prcon {
+  height: 40px;
+  width: 40px;
+}
+
+#db-btn {
+  background-color: #00000000;
+  border: none;
+  outline: none !important;
+}
+
+#drop {
+  background: url("../svg/drop.svg");
+  background-size: cover;
+  position: fixed;
+  height: 450px;
+  width: 330px;
+  margin-left: 1170px;
+  margin-top: -15px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity ease-in-out 500ms;
+  color: whitesmoke;
+  font-family: "Montserrat";
+  overflow: hidden;
+}
+
+#proImg {
+  height: 100px;
+  margin: 50px -80px;
+}
+
+#dash-btn {
+  background-color: rgb(255, 239, 11);
+  border-radius: 10px;
+  margin: -60px 90px;
+  padding: 13px 10px;
+  text-decoration: none;
+  color: black;
+}
