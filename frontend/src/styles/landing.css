@@ -1,0 +1,70 @@
+.land {
+  background: url("../svg/bgL.svg");
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -58px;
+  background-size: 100%;
+  font-family: "Montserrat", sans-serif;
+  max-height: 100% !important;
+}
+
+@keyframes animateOp {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px) scale(2.3);
+  }
+  100% {
+    opacity: 100;
+    transform: translateX(0px) scale(2.3);
+  }
+}
+
+@keyframes animateRi {
+  0% {
+    transform: translateX(-10px) scale(2.3);
+  }
+  100% {
+    opacity: 100;
+    transform: translateX(0px) scale(2.3);
+  }
+}
+
+#book,
+#things,
+#elements,
+#stars {
+  position: absolute;
+  transform: scale(2.3);
+  opacity: 0;
+}
+
+#book {
+  transform: scale(2.3);
+  margin: 600px 1200px;
+  animation: animateRi 0.5s ease-in-out forwards;
+}
+
+#stars {
+  margin: 260px 1150px;
+  animation: animateOp 0.5s ease-out 0.5s forwards;
+}
+
+#elements {
+  margin: 250px 1180px;
+  animation: animateOp 0.5s ease-out 1s forwards;
+}
+
+#things {
+  margin: 230px 1150px;
+  animation: animateOp 0.5s ease-out 1.5s forwards;
+}
+
+#intro {
+  margin: 400px 250px;
+  position: absolute;
+}
+
+#intro h1 {
+  font-size: 60px;
+}

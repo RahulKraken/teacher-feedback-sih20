@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../styles/navigate.css";
 import { ReactComponent as Tcon } from "../svg/045-teacher.svg";
 import { ReactComponent as Ocon } from "../svg/044-student.svg";
-import { ReactComponent as Drop } from "../svg/drop.svg";
 
 const Navigate = ({ user, mode }) => {
   const Icon = mode === 1 ? Tcon : Ocon;
@@ -27,10 +26,15 @@ const Navigate = ({ user, mode }) => {
   };
   return (
     <div>
-      <Navbar collapseOnSelect style={{ fontFamily: "Montserrat" }}>
+      <Navbar
+        collapseOnSelect
+        style={{ background: "#00000000", fontFamily: "Montserrat" }}
+      >
         <div className="container">
           <Navbar.Brand>
-            <a href="/">SIH20</a>
+            <a href="/" id="brand">
+              SIH20
+            </a>
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
