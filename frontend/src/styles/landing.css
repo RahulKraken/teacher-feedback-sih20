@@ -1,5 +1,5 @@
 .land {
-  background: url("../svg/bgL.svg");
+  /* background: url("../svg/bgL.svg"); */
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -12,21 +12,21 @@
 @keyframes animateOp {
   0% {
     opacity: 0;
-    transform: translateX(-10px) scale(2.3);
+    transform: translateX(-10px) scale(2);
   }
   100% {
     opacity: 100;
-    transform: translateX(0px) scale(2.3);
+    transform: translateX(0px) scale(2);
   }
 }
 
 @keyframes animateRi {
   0% {
-    transform: translateX(-10px) scale(2.3);
+    transform: translateX(-10px) scale(2);
   }
   100% {
     opacity: 100;
-    transform: translateX(0px) scale(2.3);
+    transform: translateX(0px) scale(2);
   }
 }
 
@@ -34,37 +34,49 @@
 #things,
 #elements,
 #stars {
-  position: absolute;
-  transform: scale(2.3);
+  position: fixed;
+  transform: scale(2);
   opacity: 0;
 }
 
+#bgl {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -5;
+}
+
 #book {
-  transform: scale(2.3);
-  margin: 600px 1200px;
+  margin: 32% 65%;
   animation: animateRi 0.5s ease-in-out forwards;
 }
 
 #stars {
-  margin: 260px 1150px;
+  margin: 13.8% 62%;
   animation: animateOp 0.5s ease-out 0.5s forwards;
 }
 
 #elements {
-  margin: 250px 1180px;
+  margin: 13.33% 64%;
   animation: animateOp 0.5s ease-out 1s forwards;
 }
 
 #things {
-  margin: 230px 1150px;
+  margin: 12.2% 62%;
   animation: animateOp 0.5s ease-out 1.5s forwards;
 }
 
 #intro {
-  margin: 400px 250px;
-  position: absolute;
+  margin: -30% 7%;
+  position: fixed;
+  z-index: 5;
 }
 
 #intro h1 {
   font-size: 60px;
+}
+
+.vects {
+  height: 100%;
+  width: 100%;
 }

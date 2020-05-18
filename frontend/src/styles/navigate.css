@@ -15,8 +15,8 @@
   position: fixed;
   height: 450px;
   width: 330px;
-  margin-left: 1170px;
-  margin-top: -15px;
+  margin-left: 63%;
+  margin-top: -1%;
   visibility: hidden;
   opacity: 0;
   transition: opacity ease-in-out 500ms;
@@ -34,10 +34,21 @@
 #dash-btn {
   background-color: rgb(255, 239, 11);
   border-radius: 10px;
-  margin: -60px 90px;
+  margin: 20% 33%;
   padding: 13px 10px;
   text-decoration: none;
   color: black;
+}
+
+.logout-btn {
+  background-color: rgb(209, 20, 20);
+  border-radius: 10px;
+  margin: 10% 37%;
+  padding: 10px 10px;
+  text-decoration: none;
+  color: black;
+  border: none;
+  outline: none !important;
 }
 
 #brand {

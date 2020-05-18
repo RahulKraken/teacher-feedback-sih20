@@ -24,6 +24,15 @@ const Navigate = ({ user, mode }) => {
 
     setDrop(-1 * drop);
   };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("mode");
+    sessionStorage.removeItem("user");
+    window.location = "/";
+  };
   return (
     <div>
       <Navbar
@@ -57,8 +66,11 @@ const Navigate = ({ user, mode }) => {
           {mode == 1 ? "Teacher" : "Officer"}
         </p>
         <a href="/my/dashboard" id="dash-btn">
-          My Dashboard
+          Dashboard
         </a>
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );
