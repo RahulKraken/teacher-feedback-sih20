@@ -3,13 +3,11 @@ import { ReactComponent as Book } from "../svg/book.svg";
 import { ReactComponent as Stars } from "../svg/stars.svg";
 import { ReactComponent as Elements } from "../svg/elements.svg";
 import { ReactComponent as Things } from "../svg/things.svg";
-import { ReactComponent as BGL } from "../svg/bgL.svg";
 
 const Landing = () => {
   return (
     <div className="land">
       <div className="vects">
-        {/* <BGL id="bgl" /> */}
         <div className="objects">
           <Book id="book" />
           <Stars id="stars" />

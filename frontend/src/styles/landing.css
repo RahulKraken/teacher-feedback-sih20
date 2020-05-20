@@ -11,7 +11,6 @@
   height: 100%;
   min-height: 100%;
   min-width: 100%;
-  overflow: auto;
 }
 
 @keyframes animateOp {
@@ -108,14 +107,6 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  border: 2px solid green;
-  z-index: -5;
-}
 
-#bgl {
-  border: 2px solid purple;
-  padding: 0;
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  z-index: -5;
 }
