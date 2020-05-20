@@ -37,7 +37,11 @@ const Navigate = ({ user, mode }) => {
     <div>
       <Navbar
         collapseOnSelect
-        style={{ background: "#00000000", fontFamily: "Montserrat" }}
+        style={{
+          background: "#00000000",
+          fontFamily: "Montserrat",
+          zIndex: "10",
+        }}
       >
         <div className="container">
           <Navbar.Brand>

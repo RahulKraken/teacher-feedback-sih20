@@ -1,22 +1,27 @@
 .land {
-  /* background: url("../svg/bgL.svg"); */
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-  margin-top: -58px;
-  background-size: 100%;
+  background: url("../svg/BGL.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: fixed;
+  top: 0;
+  left: 0;
   font-family: "Montserrat", sans-serif;
-  max-height: 100% !important;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto;
 }
 
 @keyframes animateOp {
   0% {
     opacity: 0;
-    transform: translateX(-10px) scale(2);
+    transform: translateX(-10px);
   }
   100% {
     opacity: 100;
-    transform: translateX(0px) scale(2);
+    transform: translateX(0px);
   }
 }
 
@@ -34,49 +39,83 @@
 #things,
 #elements,
 #stars {
-  position: fixed;
-  transform: scale(2);
+  position: absolute;
   opacity: 0;
-}
-
-#bgl {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: -5;
+  /* border: 2px solid orangered; */
 }
 
 #book {
-  margin: 32% 65%;
-  animation: animateRi 0.5s ease-in-out forwards;
+  top: 70%;
+  height: 30%;
+  width: 100%;
+  max-height: 30%;
+  max-width: 100%;
+  animation: animateRi 500ms ease-in-out forwards,
+    animateOp 500ms ease-in-out forwards;
 }
 
 #stars {
-  margin: 13.8% 62%;
-  animation: animateOp 0.5s ease-out 0.5s forwards;
+  top: -10px;
+  height: 70%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 70%;
+  animation: animateOp 500ms ease-in-out 500ms forwards;
 }
 
 #elements {
-  margin: 13.33% 64%;
-  animation: animateOp 0.5s ease-out 1s forwards;
+  left: -20px;
+  height: 70%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 70%;
+  animation: animateOp 500ms ease-in-out 1000ms forwards;
 }
 
 #things {
-  margin: 12.2% 62%;
-  animation: animateOp 0.5s ease-out 1.5s forwards;
-}
-
-#intro {
-  margin: -30% 7%;
-  position: fixed;
-  z-index: 5;
+  top: 10%;
+  height: 70%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 70%;
+  animation: animateOp 500ms ease-in-out 1500ms forwards;
 }
 
 #intro h1 {
   font-size: 60px;
 }
 
+#intro {
+  /* height: 30%;
+  width: 50%;
+  max-height: 30%;
+  max-width: 50%; */
+  position: absolute;
+  top: 18em;
+  left: 6em;
+  z-index: 5;
+  /* border: 2px solid blue; */
+}
+.objects {
+  position: absolute;
+  height: 55vh;
+  width: 35vw;
+  top: 10%;
+  left: 57%;
+}
+
 .vects {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  border: 2px solid green;
+  z-index: -5;
+}
+
+#bgl {
+  border: 2px solid purple;
+  padding: 0;
+  position: absolute;
   height: 100%;
   width: 100%;
 }

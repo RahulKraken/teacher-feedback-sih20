@@ -3,10 +3,10 @@ import "../styles/dashboard.css";
 import logsplurl from "../images/loginsplash.jpg";
 import webbg from "../images/loginweb.jpg";
 
-const Dashboard = () => {
+const Dashboard = ({ user, mode }) => {
   return (
     <div className="dashb-cont">
-      <h1>This is the DashBoard</h1>
+      <h1>Welcome {user}!</h1>
     </div>
   );
 };
