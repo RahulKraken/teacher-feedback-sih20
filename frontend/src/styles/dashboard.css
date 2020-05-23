@@ -1,3 +1,19 @@
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2rem);
+  }
+  50% {
+    transform: translateX(2rem);
+  }
+  75% {
+    transform: translateX(-2rem);
+  }
+}
+
 .dashb-cont {
   position: absolute;
   top: 0;
@@ -38,6 +54,7 @@
   background: rgb(235, 53, 53);
   border-radius: 2rem;
   transition: all 200ms ease-in;
+  z-index: 9;
   /* border: 2px solid red; */
 }
 
@@ -50,6 +67,7 @@
   background: rgb(241, 241, 83);
   border-radius: 2rem;
   transition: all 200ms ease-in;
+  z-index: 9;
   /* border: 2px solid green; */
 }
 
@@ -67,4 +85,88 @@
 .hl2 {
   color: yellow;
   text-align: center;
+}
+
+#icon-btn {
+  height: 8rem;
+  width: 8rem;
+  margin-top: 20%;
+  margin-left: 10%;
+  /* border: 2px solid blueviolet; */
+}
+
+.btn-new-session-exp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40rem;
+  width: 60rem;
+  background: rgb(84, 214, 24);
+  border-radius: 2rem;
+  transition: all 200ms ease-in;
+  z-index: 10;
+  /* border: 2px solid red; */
+}
+
+.btn-get-report-exp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40rem;
+  width: 60rem;
+  background: rgb(46, 202, 223);
+  border-radius: 2rem;
+  transition: all 200ms ease-in;
+  z-index: 10;
+  /* border: 2px solid red; */
+}
+
+.co {
+  height: 20rem;
+  width: 20rem;
+  /* border: 2px solid black; */
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  text-align: center;
+  transition: all 100ms ease-in-out;
+}
+
+.co > h3 {
+  margin-top: 10%;
+  font-size: 1rem;
+}
+
+.btn-r > .co {
+  margin-top: 15%;
+  margin-left: 15%;
+  border-right: 1px solid #00000050;
+  padding-right: 5rem;
+  padding-left: 0;
+}
+
+.class-form-con {
+  display: none;
+}
+
+.btn-r > .class-form-con {
+  position: absolute;
+  display: inherit;
+  /* border: 2px solid green; */
+  height: 15rem;
+  width: 30rem;
+  top: 30%;
+  left: 50%;
+  padding: 2rem 5rem;
+}
+
+/* .field {
+  background: rgba(255, 255, 255, 0.404);
+} */
+
+.code-btn {
+  color: black;
+}
+
+.class-form .field {
+  border-bottom: 3px solid black;
 }

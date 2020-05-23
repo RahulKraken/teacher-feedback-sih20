@@ -8,13 +8,14 @@
   outline: none !important;
   transition: border-bottom 500ms linear;
   height: 40px;
+  background: inherit;
 }
 
 .field:focus {
   border-bottom: 3px solid black;
 }
 
-button[type="submit"] {
+.auth-submit {
   background-color: #00000000;
   color: red;
   font-family: "Montserrat", sans-serif;

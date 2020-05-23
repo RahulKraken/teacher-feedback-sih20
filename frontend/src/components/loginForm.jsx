@@ -21,7 +21,9 @@ const LoginForm = () => {
         place="Enter Password"
         lbl="Password"
       />
-      <Button type="submit">Login</Button>
+      <button className="auth-submit" type="submit">
+        Login
+      </button>
     </Form>
   );
 };
