@@ -5,7 +5,7 @@ export const newSession = (mode) => {
     btn.className = "btn-new-session-exp btn-r";
     document.getElementById("return").style.opacity = "100";
   } else {
-    btn.animation = "shake 250ms ease-out forwards";
+    btn.style.animation = "shake 250ms ease-out forwards";
     alert("You must be an Officer to Start a Feedback session");
   }
 };
@@ -25,6 +25,7 @@ export const goBack = () => {
 
 export const getClassReport = (data) => {
   const code = data.get("code");
+
   console.log(code);
 };
 

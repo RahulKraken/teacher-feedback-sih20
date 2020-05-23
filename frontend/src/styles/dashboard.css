@@ -82,11 +82,6 @@
   transition: opacity 100ms ease-in 200ms;
 }
 
-.hl2 {
-  color: yellow;
-  text-align: center;
-}
-
 #icon-btn {
   height: 8rem;
   width: 8rem;
@@ -169,4 +164,37 @@
 
 .class-form .field {
   border-bottom: 3px solid black;
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+.hl2 {
+  color: yellow;
+  text-align: center;
+  opacity: 0;
+  animation: slideLeft 500ms ease-out 500ms forwards;
+}
+
+.hl1 {
+  animation: slideRight 500ms ease-out forwards;
 }
