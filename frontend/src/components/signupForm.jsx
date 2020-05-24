@@ -4,8 +4,6 @@ import "../styles/form.css";
 import { handleSignup } from "../utils/auth";
 import FormGroup from "./formComps/formGroup";
 
-const axios = require("axios");
-
 const SignupForm = () => {
   return (
     <Form className="loginWindow" onSubmit={handleSignup}>

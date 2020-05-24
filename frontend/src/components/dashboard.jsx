@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/dashboard.css";
 import re from "../icons/return.png";
 import nse from "../icons/letter.png";
@@ -14,7 +14,12 @@ const Dashboard = ({ user, mode }) => {
         <h1 className="hl2">{user}!</h1>
       </div>
       <div className="dash-btns">
-        <img src={re} id="return" onClick={onClicks.goBack}></img>
+        <img
+          alt="backButton"
+          src={re}
+          id="return"
+          onClick={onClicks.goBack}
+        ></img>
         <Choice
           className="btn-new-session btnr"
           id="btn-ns"

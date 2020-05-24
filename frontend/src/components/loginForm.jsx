@@ -1,10 +1,8 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "../styles/form.css";
 import { handleLogin } from "../utils/auth";
 import FormGroup from "./formComps/formGroup";
-
-const axios = require("axios");
 
 const LoginForm = () => {
   return (

@@ -2,10 +2,11 @@ package main
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
+
 	"github.com/RahulKraken/teacher-feedback-sih20/backend/auth"
-	"github.com/RahulKraken/teacher-feedback-sih20/backend/routes"
 	_ "github.com/RahulKraken/teacher-feedback-sih20/backend/database"
+	route "github.com/RahulKraken/teacher-feedback-sih20/backend/routes"
+	"github.com/gorilla/mux"
 )
 
 func main() {
