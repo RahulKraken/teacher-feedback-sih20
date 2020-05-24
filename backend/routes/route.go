@@ -11,7 +11,7 @@ import (
 
 // GetReport - gets all reports for given user
 func GetReport(w http.ResponseWriter, r *http.Request) {
-	log.Println("POST : GetReport")
+	log.Println("GET : GetReport")
 	var classID types.ClassID
 	log.Println(classID)
 	decoder := json.NewDecoder(r.Body)
