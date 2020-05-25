@@ -39,7 +39,7 @@ export async function handleSignup(e) {
   const name = data.get("name");
   const e_mail = data.get("email");
   const pwd = data.get("pwd");
-  if (data.get("options") === 1) {
+  if (data.get("options") === "1") {
     isOfficer = true;
   } else isTeacher = true;
 
