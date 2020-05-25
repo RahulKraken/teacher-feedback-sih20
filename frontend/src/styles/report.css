@@ -1,0 +1,30 @@
+.rep-con {
+  width: 60%;
+  max-height: 50%;
+  /* border: 3px solid red; */
+  margin: 0 10rem;
+  font-size: 20px;
+  font-family: "Montserrat";
+}
+
+.repo-list {
+  /* border: 3px solid goldenrod; */
+  margin: 0 0 5rem 5rem;
+  width: 25rem;
+}
+
+.list {
+  margin-top: 2rem;
+  /* border: 2px solid violet; */
+  display: inline-flex;
+  width: 100%;
+  font-family: "Montserrat";
+}
+
+.h-rep {
+  /* border: 3px solid brown; */
+  margin-top: 5rem;
+  margin-left: 30rem;
+  font-size: 50px;
+  font-family: "Montserrat";
+}

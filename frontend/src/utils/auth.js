@@ -22,9 +22,9 @@ export async function handleLogin(e) {
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("user", username);
     sessionStorage.setItem("mode", is_teacher ? 1 : 2);
-    // setTimeout(function () {
-    //   window.location = "/my/dashboard";
-    // }, 1200);
+    setTimeout(function () {
+      window.location = "/my/dashboard";
+    }, 1200);
   } catch (e) {
     alert(e.response.data);
   }

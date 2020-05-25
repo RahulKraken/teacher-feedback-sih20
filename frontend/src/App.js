@@ -7,6 +7,8 @@ import Auth from "./components/auth";
 import ProtectedRoute from "./components/protectedRoute";
 import Dashboard from "./components/dashboard";
 import Landing from "./components/landing";
+import Report from "./components/report";
+import Feedback from "./components/feedback";
 
 class App extends Component {
   state = {
@@ -30,6 +32,18 @@ class App extends Component {
             <ProtectedRoute
               path="/my/dashboard"
               render={() => <Dashboard mode={mode} user={user} />}
+            />
+            <ProtectedRoute
+              path="/report/:code"
+              render={(matchProps) => (
+                <Report {...this.state} code={matchProps.match.params.code} />
+              )}
+            />
+            <ProtectedRoute
+              path="/feedback/:code"
+              render={(matchProps) => (
+                <Feedback {...this.state} code={matchProps.match.params.code} />
+              )}
             />
             <Route path="/" component={Landing} />
           </Switch>

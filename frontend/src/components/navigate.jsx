@@ -51,7 +51,7 @@ const Navigate = ({ user, mode }) => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav pullright="true">
-              {user !== undefined ? (
+              {user !== null ? (
                 <button id="db-btn" onClick={handleDrop}>
                   <Icon className="prcon" />
                 </button>
@@ -66,7 +66,7 @@ const Navigate = ({ user, mode }) => {
         <Icon id="proImg"></Icon>
         <h1 style={{ fontSize: "34px", textAlign: "center" }}>{user}</h1>
         <p style={{ fontSize: "10px", textAlign: "center" }}>
-          {mode === 1 ? "Teacher" : "Officer"}
+          {mode === "1" ? "Teacher" : "Officer"}
         </p>
         <a href="/my/dashboard" id="dash-btn">
           Dashboard
