@@ -5,7 +5,7 @@ import { ReactComponent as Tcon } from "../svg/045-teacher.svg";
 import { ReactComponent as Ocon } from "../svg/044-student.svg";
 
 const Navigate = ({ user, mode }) => {
-  const Icon = mode === 1 ? Tcon : Ocon;
+  const Icon = mode === "1" ? Tcon : Ocon;
 
   const [drop, setDrop] = useState(1);
 
