@@ -48,6 +48,10 @@ func SubmitFeedback(w http.ResponseWriter, r *http.Request) {
 		log.Println("error unmarshaling json")
 		http.Error(w, "error submitting feeback", http.StatusInternalServerError)
 	}
+	report, _ := database.GetReport(feedback.ClassID);
+	size := len(report.Data);
+	log.Println("size: of report: ", size);
+	feedback.ID = size + 1;
 	err := database.AddQuestionnaireToUser(feedback.ClassID, feedback)
 	if err != nil {
 		log.Println("error saving feedback")
