@@ -10,7 +10,7 @@ export const newSession = (mode) => {
     const newOne = btn.cloneNode(true);
     newOne.style.animation = "shake 250ms ease-out forwards";
     btn.parentNode.replaceChild(newOne, btn);
-    // alert("You must be an Officer to Start a Feedback session");
+    alert("You must be an Officer to Start a Feedback session");
   }
 };
 

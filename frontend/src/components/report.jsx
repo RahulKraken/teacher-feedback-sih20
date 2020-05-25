@@ -32,7 +32,8 @@ class Report extends Component {
       console.log(set.questions);
       return (
         <div className="rep">
-          <h1 className="h-rep">Reports</h1>
+          <h1 className="h-rep">Reports for Classroom Code</h1>
+          <h1 className="h-code">{this.props.code}</h1>
           <div className="list">
             <div className="repo-list">
               <ReportList

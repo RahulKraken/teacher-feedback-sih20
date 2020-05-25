@@ -7,7 +7,7 @@ textarea {
 .fb-con {
   height: 400px;
   width: 60%;
-  margin: 10rem 20%;
+  margin: 4rem 20%;
 }
 
 .f-head {
@@ -18,4 +18,13 @@ textarea {
 .feed-btn {
   color: red;
   margin-top: 2rem;
+}
+
+.h-feed {
+  font-family: "Montserrat";
+  font-size: 4rem;
+  margin: 1rem 20%;
+}
+.f-code {
+  color: red;
 }

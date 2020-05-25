@@ -29,7 +29,10 @@ class Feedback extends Component {
     if (quests !== undefined) {
       return (
         <div className="feed-back-con">
-          <h1>This is Feedback Page</h1>
+          <h1 className="h-feed">
+            Feedback for Classroom Code{" "}
+            <section className="f-code">{this.props.code}</section>
+          </h1>
           <div className="fb-con">
             <Form className="feed-form" onSubmit={this.handleSubmit}>
               <Accordion defaultActiveKey="0">
