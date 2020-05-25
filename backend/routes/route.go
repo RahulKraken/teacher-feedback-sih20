@@ -11,10 +11,12 @@ import (
 
 // GetReport - gets all reports for given user
 func GetReport(w http.ResponseWriter, r *http.Request) {
-	log.Println("GET : GetReport")
+	log.Println("POST : GetReport")
 	var classID types.ClassID
+	log.Println(classID)
 	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&classID); if err != nil {
+	err := decoder.Decode(&classID)
+	if err != nil {
 		log.Panic("error decoding request body")
 	}
 	log.Println("classID: ", classID.ClassID)
@@ -24,7 +26,8 @@ func GetReport(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "failed to fetch reports", http.StatusInternalServerError)
 	}
 	encoder := json.NewEncoder(w)
-	err = encoder.Encode(report); if err != nil {
+	err = encoder.Encode(report)
+	if err != nil {
 		log.Println("error sending report")
 		http.Error(w, "error receiving report", http.StatusInternalServerError)
 	}

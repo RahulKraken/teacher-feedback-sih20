@@ -8,7 +8,7 @@ const Choice = ({ id, handleClick, msg, icon, mode, className }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    if (op == 1) {
+    if (op === 1) {
       clicks.getSession(data);
     } else {
       clicks.getClassReport(data);
@@ -17,7 +17,7 @@ const Choice = ({ id, handleClick, msg, icon, mode, className }) => {
   return (
     <div id={id} className={className} onClick={() => handleClick(mode)}>
       <div className="co">
-        <img src={icon} id="icon-btn"></img>
+        <img alt="icon" src={icon} id="icon-btn"></img>
         <h3>{msg}</h3>
       </div>
       <div className="class-form-con">

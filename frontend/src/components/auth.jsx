@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import { Form, Button } from "react-bootstrap";
 import "../styles/auth.css";
 import logsplurl from "../images/loginsplash.jpg";
 import webbg from "../images/loginweb.jpg";
@@ -22,7 +20,7 @@ const Login = () => {
     const btn = document.getElementById("btn");
     const con = document.getElementById("cont");
 
-    if (mode == 1) {
+    if (mode === 1) {
       card.style.transform = "translateX(400px)";
       card.style.borderRadius = "0 10px 10px 0";
       text.innerText = "Already have an Account ?";
@@ -64,7 +62,7 @@ const Login = () => {
               SignUp
             </button>
           </div>
-          <img src={logsplurl} className="lgsp"></img>
+          <img alt="slider" src={logsplurl} className="lgsp"></img>
         </div>
       </div>
     </div>

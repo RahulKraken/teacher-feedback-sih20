@@ -1,7 +1,9 @@
+import axios from "axios";
+
 export const newSession = (mode) => {
   console.log("click");
   const btn = document.getElementById("btn-ns");
-  if (mode == 2) {
+  if (mode === 2) {
     btn.className = "btn-new-session-exp btn-r";
     document.getElementById("return").style.opacity = "100";
   } else {
@@ -23,13 +25,44 @@ export const goBack = () => {
   document.getElementById("return").style.opacity = "";
 };
 
-export const getClassReport = (data) => {
+export const getClassReport = async (data) => {
   const code = data.get("code");
-
-  console.log(code);
+  const url = "/getReport";
+  const options = {
+    method: "POST",
+    url: url,
+    headers: {
+      Token: sessionStorage.getItem("token"),
+    },
+    data: {
+      classId: code,
+    },
+  };
+  try {
+    const res = await axios(options);
+    console.log(res.data);
+  } catch (e) {
+    console.log(e.response.data);
+  }
 };
 
-export const getSession = (data) => {
+export const getSession = async (data) => {
   const code = data.get("code");
-  console.log(code);
+  const url = "/getQuestionnaire";
+  const options = {
+    method: "GET",
+    url: url,
+    headers: {
+      Token: sessionStorage.getItem("token"),
+    },
+    data: {
+      classId: code,
+    },
+  };
+  try {
+    const res = await axios(options);
+    console.log(res.data);
+  } catch (e) {
+    console.log(e.response.data);
+  }
 };

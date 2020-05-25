@@ -22,9 +22,9 @@ export async function handleLogin(e) {
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("user", username);
     sessionStorage.setItem("mode", is_teacher ? 1 : 2);
-    setTimeout(function () {
-      window.location = "/my/dashboard";
-    }, 1200);
+    // setTimeout(function () {
+    //   window.location = "/my/dashboard";
+    // }, 1200);
   } catch (e) {
     alert(e.response.data);
   }
@@ -39,7 +39,7 @@ export async function handleSignup(e) {
   const name = data.get("name");
   const e_mail = data.get("email");
   const pwd = data.get("pwd");
-  if (data.get("options") == 1) {
+  if (data.get("options") === 1) {
     isOfficer = true;
   } else isTeacher = true;
 
@@ -55,7 +55,6 @@ export async function handleSignup(e) {
       is_officer: isOfficer,
     },
   };
-  let mode = 1;
   try {
     const response = await axios(options);
     console.log(response.data);
