@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { fetchReport } from "../utils/requests";
-import axios from "axios";
-import { Accordion, Button, Card } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import Cards from "./card";
 import "../styles/report.css";
 import ReportList from "./reportList";
@@ -9,12 +8,13 @@ import ReportList from "./reportList";
 class Report extends Component {
   state = {
     data: [],
-    current: 3,
+    current: 0,
   };
 
   async componentDidMount() {
-    const { code, current } = this.props;
+    const { code } = this.props;
     const data = await fetchReport(code);
+    console.log(data, code);
     this.setState({ data });
   }
 
@@ -26,6 +26,7 @@ class Report extends Component {
   render() {
     const { data, current } = this.state;
     const set = data[current];
+    console.log(data, set);
     let n = -1;
     if (set !== undefined) {
       console.log(set.questions);

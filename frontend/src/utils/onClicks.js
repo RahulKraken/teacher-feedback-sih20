@@ -1,6 +1,4 @@
 import axios from "axios";
-import React from "react";
-import { Redirect } from "react-router-dom";
 
 export const newSession = (mode) => {
   console.log("click");

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Accordion, Button } from "react-bootstrap";
+import { Card, Accordion } from "react-bootstrap";
 
 const Cards = ({ n, body, que }) => {
   return (

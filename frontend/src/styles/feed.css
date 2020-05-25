@@ -1,0 +1,21 @@
+textarea {
+  width: 90%;
+  height: 5rem;
+  font-size: 20px;
+}
+
+.fb-con {
+  height: 400px;
+  width: 60%;
+  margin: 10rem 20%;
+}
+
+.f-head {
+  height: 5rem;
+  font-size: 20px;
+}
+
+.feed-btn {
+  color: red;
+  margin-top: 2rem;
+}
