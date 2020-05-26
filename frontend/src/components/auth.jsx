@@ -10,7 +10,7 @@ const Login = () => {
   const bd = document.body;
   bd.style.backgroundImage = "url('" + imgurl + "')";
 
-  //states
+  
   const [mode, setMode] = useState(1);
 
   function toggle() {
